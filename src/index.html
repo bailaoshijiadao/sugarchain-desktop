@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sugarchain desktop</title>
+
+    <link rel="stylesheet" href="/home/static/css/Baloo+Bhaijaan.css">
+    <link rel="stylesheet" href="/wallet/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/wallet/stylesheets/entypo.css">
+
+    <script src="/home/static/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/navigation/navigation.css">
+
+    <script src="/home/static/js/CSSPlugin.min.js"></script>
+    <script src="/home/static/js/EasePack.min.js"></script>
+    <script src="/home/static/js/TweenLite.min.js"></script>
+    <script src="/home/static/js/TimelineLite.min.js"></script>
+
+    <style>
+      .neon {
+        color: #cce7f8;
+        font-size: 2.5rem;
+        font-family: 'Baloo Bhaijaan', cursive;
+        text-transform: none;
+        animation: shining 0.1s alternate infinite;
+      }
+      
+      @keyframes shining {
+        from {
+          text-shadow: 0 0 6px rgba(182, 211, 207, 0.9),
+            0 0 30px rgba(182, 211, 207, 0.3), 0 0 12px rgba(15, 115, 223, 0.5),
+            0 0 21px rgba(15, 115, 223, 0.9), 0 0 34px rgba(15, 115, 223, 0.8),
+            0 0 54px rgba(15, 115, 223, 0.9);
+        }
+        to {
+          text-shadow: 0 0 6px rgba(182, 211, 207, 1),
+            0 0 30px rgba(182, 211, 207, 0.4), 0 0 12px rgba(15, 115, 223, 0.6),
+            0 0 22px rgba(15, 115, 223, 0.8), 0 0 38px rgba(15, 115, 223, 0.9),
+            0 0 60px rgba(15, 115, 223, 1);
+        }
+      }
+      
+      .sugarchain {
+        position: inherit;
+        top: 50%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        color: white;
+        font-size: 5em;
+        font-family: "Baloo Bhaijaan", cursive;
+        text-transform: none;
+      }
+      .sugarchain span {
+        text-shadow: 0 1px #bbb, 0 2px #bbb, 0 3px #bbb, 0 4px #bbb, 0 5px #bbb, 0 6px transparent, 0 7px transparent, 0 8px transparent, 0 9px transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
+        transform: translateY(20px);
+        animation: bounce 0.3s ease infinite alternate;
+      }
+      
+      @keyframes bounce {
+        to {
+          text-shadow: 0 1px #bbb, 0 2px #bbb, 0 3px #bbb, 0 4px #bbb, 0 5px #bbb, 0 6px #bbb, 0 7px #bbb, 0 8px #bbb, 0 9px #bbb, 0 50px 25px rgba(0, 0, 0, 0.2);
+          transform: translateY(-20px);
+        }
+      }
+      
+        iframe.animation { width: 100%; height: 100%; position: absolute; left: 0; top: 0; border: none; }
+        .content {
+          position: relative;
+          z-index: 10; /* Ensure this content is above the iframe */
+        }
+      
+        .content{
+          display: table;
+      
+          max-width: 1000px;
+          margin:10px auto;
+          min-width:320px;
+          width:100%;
+      }
+      
+      .content ul{
+           display: table;
+           width:100%;
+           padding:0;
+       }
+      
+      .content ul li{
+          display: table-cell;
+          text-align: center;
+          height:100px;
+          border-right: none;
+       }
+      
+      
+      
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      .bt1 {
+        padding: 100px;
+        height: 100%;
+        position: inherit;
+        top: 20%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        -webkit-animation: hue-rotate 10s linear infinite;
+                animation: hue-rotate 10s linear infinite;
+      }
+      
+      .button {
+        -webkit-font-smoothing: antialiased;
+        background-color: #222;
+        border: none;
+        color: #fff;
+        display: inline-block;
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        font-weight: 100;
+        text-decoration: none;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        letter-spacing: 1px;
+        color: white;
+        padding: 20px 40px;
+        text-transform: uppercase;
+        transition: all 0.1s ease-out;
+      }
+      .button:hover {
+        background-color: #90feb5;
+        color: #fff;
+      }
+      .button:active {
+        transform: scale(0.95);
+      }
+      .button--bubble {
+        position: relative;
+        z-index: 2;
+        color: white;
+        background: none;
+      }
+      .button--bubble:hover {
+        background: none;
+      }
+      .button--bubble:hover + .button--bubble__effect-container .circle {
+        background: #44fd82;
+      }
+      .button--bubble:hover + .button--bubble__effect-container .button {
+        background: #44fd82;
+      }
+      .button--bubble:active + .button--bubble__effect-container {
+        transform: scale(0.95);
+      }
+      .button--bubble__container {
+        position: relative;
+        display: inline-block;
+      }
+      .button--bubble__container .effect-button {
+        position: absolute;
+        width: 50%;
+        height: 25%;
+        top: 50%;
+        left: 25%;
+        z-index: 1;
+        transform: translateY(-50%);
+        background: #222;
+        transition: background 0.1s ease-out;
+      }
+      
+      .button--bubble__effect-container {
+        position: absolute;
+        display: block;
+        width: 200%;
+        height: 400%;
+        top: -150%;
+        left: -50%;
+        filter: url("#goo");
+        transition: all 0.1s ease-out;
+        pointer-events: none;
+      }
+      .button--bubble__effect-container .circle {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        border-radius: 15px;
+        background: #222;
+        transition: background 0.1s ease-out;
+      }
+      .button--bubble__effect-container .circle.top-left {
+        top: 40%;
+        left: 27%;
+      }
+      .button--bubble__effect-container .circle.bottom-right {
+        bottom: 40%;
+        right: 27%;
+      }
+      
+      .goo {
+        position: absolute;
+        visibility: hidden;
+        width: 1px;
+        height: 1px;
+      }
+      
+      .button--bubble__container {
+        top: 50%;
+        margin-top: -25px;
+      }
+      
+      @-webkit-keyframes hue-rotate {
+        from {
+          -moz-filter: hue-rotate(0);
+          -ms-filter: hue-rotate(0);
+          filter: hue-rotate(0);
+        }
+        to {
+          -moz-filter: hue-rotate(360deg);
+          -ms-filter: hue-rotate(360deg);
+          filter: hue-rotate(360deg);
+        }
+      }
+      
+      @keyframes hue-rotate {
+        from {
+          -moz-filter: hue-rotate(0);
+          -ms-filter: hue-rotate(0);
+          filter: hue-rotate(0);
+        }
+        to {
+          -moz-filter: hue-rotate(360deg);
+          -ms-filter: hue-rotate(360deg);
+          filter: hue-rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <iframe class="animation" src="/home/index.html"></iframe>
+    <div class="content">
+      <ul>
+        <li class="neon">
+          <div class="lang" key="one"></div>
+          <div class="lang" key="one-CPU-one-vote"></div>
+          <div class="lang" key="no-no-no"></div>
+          <div class="lang" key="fastest">the world’s fastest PoW blockchain</div>
+        </li>
+      </ul>
+
+      <div class="sugarchain">SugarChain</div>
+      <ul>
+        <li class="neon">
+          <div class="lang" key="total"></div>
+          <div>1073741824</div>
+        </li>
+        <li class="neon">
+          <div class="lang" key="supply"></div>
+          <div class="neon" id="supply"></div>
+        </li>
+      </ul>
+      <ul>
+        <li class="neon">
+          <div class="lang" key="blocktime"></div>
+          <div class="lang" key="seconds"></div>
+        </li>
+
+        <li class="neon">
+          <div class="lang" key="height">Block height</div>
+          <div class="neon" id="blocks"></div>
+        </li>
+
+        <li class="neon">
+          <div class="lang" key="nethash">Nethash</div>
+          <div class="neon" id="nethash"></div>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <div class="bt1">
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
+
+      <span class="button--bubble__container" onclick="fetchData()">
+        <a href="#" class="button button--bubble">
+          <div class="lang" key="refresh">Refresh</div>
+        </a>
+        <span class="button--bubble__effect-container">
+          <span class="circle top-left"></span>
+          <span class="circle top-left"></span>
+          <span class="circle top-left"></span>
+
+          <span class="button effect-button"></span>
+
+          <span class="circle bottom-right"></span>
+          <span class="circle bottom-right"></span>
+          <span class="circle bottom-right"></span>
+        </span>
+      </span>
+    </div>
+
+
+    <div id="nmh-navicon" class="NMH-g-plugin NMH-g-navicon">
+      <button class="Jnmh-btnlogo"></button>
+      <ins class="Jnmh-btnlogohover"></ins>
+      <ul class="Jnmh-m-submenu">
+        <li class="Jnmh-subli">
+          <dl class="Jnmh-subdl">
+            <dt class="NMH-subdt">
+              <a href="#" class="lang" key="navhome">Home</a>
+            </dt>
+          </dl>
+        </li>
+        <li class="Jnmh-subli">
+          <dl class="Jnmh-subdl">
+            <dt class="NMH-subdt">
+              <a href="/wallet/index.html" class="lang" key="navwallet">Wallet</a>
+            </dt>
+            <dd class="NMH-subdd"></dd>
+          </dl>
+        </li>
+        <li class="Jnmh-subli">
+          <dl class="Jnmh-subdl">
+            <dt class="NMH-subdt">
+              <a href="/explorer/index.html" class="lang" key="navexplorer">Explorer</a>
+            </dt>
+            <dd class="NMH-subdd"></dd>
+          </dl>
+        </li>
+        <li class="Jnmh-subli">
+          <dl class="Jnmh-subdl">
+            <dt class="NMH-subdt">
+              <a href="/faq/index.html" class="lang" key="navfaq">FAQ</a>
+            </dt>
+            <dd class="NMH-subdd"></dd>
+          </dl>
+        </li>
+        <li class="Jnmh-subli">
+          <dl class="Jnmh-subdl">
+            <dt class="NMH-subdt">
+              <a href="/about/index.html" class="lang" key="navabout">About</a>
+            </dt>
+            <dd class="NMH-subdd"></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+
+  </body>
+  <script>
+    const url = 'https://api.sugarchain.net/info';
+    function fetchData() {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          document.getElementById('supply').innerHTML = `${JSON.stringify(parseInt(data["result"]["supply"]/100000000))}`;
+          document.getElementById('nethash').innerHTML = `${JSON.stringify((data["result"]["nethash"]/1000))} Kh/s`;
+          document.getElementById('blocks').innerHTML = `${JSON.stringify((data["result"]["blocks"]))}`;   
+        })
+        .catch(error => {
+          console.error('error:', error);
+        });
+    }
+     
+    //setInterval(fetchData, 60000);
+    
+    let sugarchain = document.querySelector(".sugarchain");
+    let letters = sugarchain.textContent.split("");
+    sugarchain.textContent = "";
+    letters.forEach((letter, i) => {
+      let span = document.createElement("span");
+      span.textContent = letter;
+      span.style.animationDelay = `${i / 20}s`;
+      sugarchain.append(span);
+    });
+    
+    document.body.onselectstart = function(){
+    　　return false;
+    }
+    
+    window.onload = function () {  
+      fetchData();   
+    }
+    
+    
+    //button
+    $('.button--bubble').each(function() {
+      var $circlesTopLeft = $(this).parent().find('.circle.top-left');
+      var $circlesBottomRight = $(this).parent().find('.circle.bottom-right');
+    
+      var tl = new TimelineLite();
+      var tl2 = new TimelineLite();
+    
+      var btTl = new TimelineLite({ paused: true });
+    
+      tl.to($circlesTopLeft, 1.2, { x: -25, y: -25, scaleY: 2, ease: SlowMo.ease.config(0.1, 0.7, false) });
+      tl.to($circlesTopLeft.eq(0), 0.1, { scale: 0.2, x: '+=6', y: '-=2' });
+      tl.to($circlesTopLeft.eq(1), 0.1, { scaleX: 1, scaleY: 0.8, x: '-=10', y: '-=7' }, '-=0.1');
+      tl.to($circlesTopLeft.eq(2), 0.1, { scale: 0.2, x: '-=15', y: '+=6' }, '-=0.1');
+      tl.to($circlesTopLeft.eq(0), 1, { scale: 0, x: '-=5', y: '-=15', opacity: 0 });
+      tl.to($circlesTopLeft.eq(1), 1, { scaleX: 0.4, scaleY: 0.4, x: '-=10', y: '-=10', opacity: 0 }, '-=1');
+      tl.to($circlesTopLeft.eq(2), 1, { scale: 0, x: '-=15', y: '+=5', opacity: 0 }, '-=1');
+    
+      var tlBt1 = new TimelineLite();
+      var tlBt2 = new TimelineLite();
+      
+      tlBt1.set($circlesTopLeft, { x: 0, y: 0, rotation: -45 });
+      tlBt1.add(tl);
+    
+      tl2.set($circlesBottomRight, { x: 0, y: 0 });
+      tl2.to($circlesBottomRight, 1.1, { x: 30, y: 30, ease: SlowMo.ease.config(0.1, 0.7, false) });
+      tl2.to($circlesBottomRight.eq(0), 0.1, { scale: 0.2, x: '-=6', y: '+=3' });
+      tl2.to($circlesBottomRight.eq(1), 0.1, { scale: 0.8, x: '+=7', y: '+=3' }, '-=0.1');
+      tl2.to($circlesBottomRight.eq(2), 0.1, { scale: 0.2, x: '+=15', y: '-=6' }, '-=0.2');
+      tl2.to($circlesBottomRight.eq(0), 1, { scale: 0, x: '+=5', y: '+=15', opacity: 0 });
+      tl2.to($circlesBottomRight.eq(1), 1, { scale: 0.4, x: '+=7', y: '+=7', opacity: 0 }, '-=1');
+      tl2.to($circlesBottomRight.eq(2), 1, { scale: 0, x: '+=15', y: '-=5', opacity: 0 }, '-=1');
+      
+      tlBt2.set($circlesBottomRight, { x: 0, y: 0, rotation: 45 });
+      tlBt2.add(tl2);
+    
+      btTl.add(tlBt1);
+      btTl.to($(this).parent().find('.button.effect-button'), 0.8, { scaleY: 1.1 }, 0.1);
+      btTl.add(tlBt2, 0.2);
+      btTl.to($(this).parent().find('.button.effect-button'), 1.8, { scale: 1, ease: Elastic.easeOut.config(1.2, 0.4) }, 1.2);
+    
+      btTl.timeScale(2.6);
+    
+      $(this).on('mouseover', function() {
+        btTl.restart();
+      });
+    });
+    
+    
+    
+    /*var arrLang = {
+      "en": {
+        "one-CPU-one-vote":"one-CPU-one-vote",
+        "no-no-no":"NO ICO, NO Presale, NO Founder's rewards",
+        "fastest":"the world’s fastest PoW blockchain",
+        "total":"Total",
+        "supply":"Supply",
+        "blocktime":"Block time",
+        "seconds":"5 Seconds",
+        "height":"Block height",
+        "nethash":"Nethash",
+        "refresh":"Refresh"
+      },
+      "zh": {
+        "one-CPU-one-vote":"一CPU一票",
+        "no-no-no":"无ICO  无预售  无创始人奖励",
+        "fastest":"世界上最快的 PoW 区块链",
+        "total":"总量",
+        "supply":"流通量",
+        "blocktime":"区块时间",
+        "seconds":"5 秒",
+        "height":"区块高度",
+        "nethash":"网络算力",
+        "refresh":"刷新"
+      }
+    };
+    
+    // The default language is English
+    var lang = "en";
+    // Check for localStorage support
+    if('localStorage' in window){
+       //var lang = localStorage.getItem('lang') || navigator.language.slice(0, 2);
+       //if (!Object.keys(arrLang).includes(lang)) lang = 'en';
+       var lang = readCookie('language');
+    
+    }
+    
+    $(document).ready(function() {
+      $(".lang").each(function(index, element) {
+        $(this).text(arrLang[lang][$(this).attr("key")]);
+      });
+    });
+    
+    // get/set the selected language
+    $(".translate").click(function() {
+      var lang = $(this).attr("id");
+    
+      // update localStorage key
+      if('localStorage' in window){
+        localStorage.setItem('lang', lang);
+        console.log( localStorage.getItem('lang') );
+      }
+    
+      $(".lang").each(function(index, element) {
+        $(this).text(arrLang[lang][$(this).attr("key")]);
+      });
+    });
+    
+    
+    function readCookie(name) {
+      var nameEQ = encodeURIComponent(name) + '=';
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+      }
+      return null;
+    }
+    */
+    
+    // access the pre-bundled global API functions
+    const { invoke } = window.__TAURI__.tauri
+
+    // now we can call our Command!
+    // You will see "Welcome from Tauri" replaced
+    // by "Hello, World!"!
+    invoke('greet', { data: 'World' })
+      // `invoke` returns a Promise
+      .then((response) => {
+        //window.header.innerHTML = response
+      })
+  </script>
+  <script src="/navigation/navigation.js"></script>
+</html>

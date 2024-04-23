@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draggable Menu</title>
+
+<script src="/home/static/js/jquery.min.js"></script>
+<link rel="stylesheet" href="/navigation/navigation.css">
+<script src="/navigation/navigation.js"></script>
+<style type="text/css">
+	:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #0f0f0f;
+  background-color: #f6f6f6;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.container {
+  margin: 0;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: 0.75s;
+}
+
+.logo.sugarchain:hover {
+  filter: drop-shadow(0 0 2em #24c8db);
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+
+h1 {
+  text-align: center;
+}
+
+input,
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  color: #0f0f0f;
+  background-color: #ffffff;
+  transition: border-color 0.25s;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #396cd8;
+}
+button:active {
+  border-color: #396cd8;
+  background-color: #e8e8e8;
+}
+
+input,
+button {
+  outline: none;
+}
+
+#greet-input {
+  margin-right: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f6f6f6;
+    background-color: #2f2f2f;
+  }
+
+  a:hover {
+    color: #24c8db;
+  }
+
+  input,
+  button {
+    color: #ffffff;
+    background-color: #0f0f0f98;
+  }
+  button:active {
+    background-color: #0f0f0f69;
+  }
+}
+
+</style>
+
+</head>
+<body>
+<div class="container">
+      <h1>Welcome to Sugarchain About!</h1>
+
+      <div class="row">
+        <a href="https://api.sugarchain.net" target="_blank">
+          <img src="/assets/logo.svg" class="logo sugarchain" alt="sugarchain logo" />
+        </a>
+      </div>
+
+      <h5>糖链轻钱包，是网页钱包本地运行版本，不需要服务器和网络，不需要同步区块，可做冷钱包</h5>
+      <h5>钱包不会上传任何数据，所以请自己保存好私钥，丢失无法找回。</h5>
+      <h5>钱包通过节点api接口就可完成查询和交易，内置区块浏览器。如果钱包api失效，可更改新的可用api接口。</h5>
+
+    </div>
+
+<div id="nmh-navicon" class="NMH-g-plugin NMH-g-navicon">
+    <button class="Jnmh-btnlogo"></button>
+    <ins class="Jnmh-btnlogohover"></ins>
+    <ul class="Jnmh-m-submenu">
+      <li class="Jnmh-subli">
+        <dl class="Jnmh-subdl">
+          <dt class="NMH-subdt"><a href="/" class="lang" key="navhome">Home</a></dt>
+        </dl>
+      </li>
+      <li class="Jnmh-subli">
+        <dl class="Jnmh-subdl">
+          <dt class="NMH-subdt"><a href="/wallet/index.html" class="lang" key="navwallet">Wallet</a></dt>
+          <dd class="NMH-subdd"></dd>
+        </dl>
+      </li>
+      <li class="Jnmh-subli">
+        <dl class="Jnmh-subdl">
+          <dt class="NMH-subdt"><a href="/explorer/index.html" class="lang" key="navexplorer">Explorer</a></dt>
+          <dd class="NMH-subdd"></dd>
+        </dl>
+      </li>
+      <li class="Jnmh-subli">
+        <dl class="Jnmh-subdl">
+          <dt class="NMH-subdt"><a href="/faq/index.html" class="lang" key="navfaq">FAQ</a></dt>
+          <dd class="NMH-subdd"></dd>
+        </dl>
+      </li>
+      <li class="Jnmh-subli">
+        <dl class="Jnmh-subdl">
+          <dt class="NMH-subdt"><a href="#" class="lang" key="navabout">About</a></dt>
+          <dd class="NMH-subdd"></dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
+ 
+</body>
+
+</html>
