@@ -1,7 +1,21 @@
-# Tauri + Vanilla
+# Sugarchain-desktop
 
-This template should help get you started developing with Tauri in vanilla HTML, CSS and Javascript.
+### Installation
 
-## Recommended IDE Setup
+```
+$ npm install
+```
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+### Local Development
+
+```
+$ npm run tauri start
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```
+$ npm run tauri build
+```
